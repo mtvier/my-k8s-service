@@ -1,0 +1,29 @@
+# Enable replication and HA settings
+replication:
+  enabled: true
+  numReplicas: 2  # Number of replica nodes
+
+# MySQL root password
+auth:
+  rootPassword: test123
+  database: my-k8s-service
+  username: myuser
+  password: test123
+
+# Persistence settings for data durability
+persistence:
+  enabled: true
+  size: "500Mi"  # Adjust this depending on your needs
+
+# Configure the MySQL replication user (it’s automatically created)
+replicationPassword: test123
+
+# Configure the service and endpoints
+service:
+  type: ClusterIP  # Or LoadBalancer if you need external access
+
+# Optional: Customize other settings as needed
+resources:
+  requests:
+    memory: "250Mi"
+    cpu: "250m"
