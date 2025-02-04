@@ -10,15 +10,48 @@ spec:
     chart: mariadb-galera
     targetRevision: 7.4.15
     helm:
-      parameters:
-        - name: rootUser.password
-          value: test123
-        - name: db.user
-          value: myuser
-        - name: db.password
-          value: test123
-        - name: db.name
-          value: my-k8s-service
+      values: |
+        # Aktiviert die Galera-Replikation für Hochverfügbarkeit
+        galera:
+          enabled: true
+          replicaCount: 2  # Anzahl der Replikate für das Cluster
+          clusterBootstrap: true  # Initialisiert das erste Pod als Cluster-Bootstrap
+          sst: mariabackup  # Nutzt mariabackup für State Snapshot Transfer (SST)
+
+        # Authentifizierungsdaten für MariaDB
+        auth:
+          rootPassword: test123
+          database: my-k8s-service
+          username: myuser
+          password: test123
+
+        # Konfiguration für den Service
+        service:
+          type: ClusterIP  # Kann LoadBalancer sein, falls externer Zugriff benötigt wird
+          port: 3306
+
+        # Persistenz für dauerhafte Speicherung
+        persistence:
+          enabled: true
+          size: "500Mi"
+          storageClass: ""  # Optional: Definiere eine StorageClass, falls erforderlich
+
+        # Galera-spezifische Konfiguration für Replikation
+        galeraConfiguration:
+          wsrep_cluster_name: "my-galera-cluster"
+          wsrep_cluster_address: "gcomm://"
+          wsrep_node_address: ""
+          wsrep_sst_method: "mariabackup"
+          wsrep_sst_auth: "root:test123"
+
+        # Ressourcen-Limits für die MariaDB-Pods
+        resources:
+          requests:
+            memory: "250Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
   destination:
     server: https://kubernetes.default.svc
     namespace: my-k8s-service
@@ -26,4 +59,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
 
