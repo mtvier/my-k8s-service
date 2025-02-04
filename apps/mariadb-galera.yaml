@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mariadb-galera
-  namespace: argocd
+  namespace: my-k8s-service
 spec:
   project: default
   source:
