@@ -26,3 +26,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  persistence:
+    storageClass: standard
+    size: 250Mi
+
