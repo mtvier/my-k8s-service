@@ -11,4 +11,7 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "test123"
+  selector:
+    matchLabels:
+      app: mysql
 
