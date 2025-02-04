@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mtvier/my-k8s-service.git
-    path: charts/mysql  # Der Pfad zum MySQL-Helm-Chart
+    path: charts/mysql
     targetRevision: HEAD
     helm:
       valueFiles:
