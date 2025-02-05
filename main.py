@@ -7,7 +7,7 @@ db_config = {
     'host': 'mariadb-galera.default.svc.cluster.local',
     'user': 'myuser',
     'password': 'test123',
-    'database': 'my-k8s-service'
+    'database': 'my_database'
 }
 
 def create_connection():
