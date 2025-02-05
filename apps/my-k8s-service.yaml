@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: my-k8s-service
-  namespace: argocd
+  namespace: default
 spec:
   project: default
   source:
