@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mariadb-galera
-  namespace: my-k8s-service
+  namespace: default
 spec:
   project: default
   source:
@@ -54,7 +54,7 @@ spec:
             cpu: "500m"
   destination:
     server: https://kubernetes.default.svc
-    namespace: my-k8s-service
+    namespace: default
   syncPolicy:
     automated:
       prune: true
