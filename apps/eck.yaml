@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://helm.elastic.co
     chart: eck-operator
-    targetRevision: latest
+    targetRevision: 8.5.1
     helm:
       values:
   destination:
