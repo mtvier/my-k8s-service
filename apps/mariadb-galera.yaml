@@ -19,11 +19,13 @@ spec:
           sst: mariabackup  # Nutzt mariabackup für State Snapshot Transfer (SST)
 
         # Authentifizierungsdaten für MariaDB
-        auth:
-          rootPassword: talksgjfasg
-          database: my-k8s-service
-          username: myuser
-          password: sdlkfj943g
+        rootUser:
+            user: admin
+            password: "test123"
+        db:
+            user: myuser
+            password: "test123"
+            name: my-k8s-service
 
         # Konfiguration für den Service
         service:
@@ -52,6 +54,7 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "500m"
+
   destination:
     server: https://kubernetes.default.svc
     namespace: default
