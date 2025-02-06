@@ -20,10 +20,10 @@ spec:
 
         # Authentifizierungsdaten für MariaDB
         auth:
-          rootPassword: test123
+          rootPassword: talksgjfasg
           database: my-k8s-service
           username: myuser
-          password: test123
+          password: sdlkfj943g
 
         # Konfiguration für den Service
         service:
