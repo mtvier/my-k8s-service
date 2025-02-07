@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://helm.elastic.co
     chart: eck-stack
-    targetRevision: 2.16.1
+    targetRevision: 0.14.1
     helm:
       values:
   destination:
