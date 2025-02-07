@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://helm.elastic.co
-    chart: elastic-operator
+    chart: eck-operator
     targetRevision: 2.16.1
     helm:
       values:
