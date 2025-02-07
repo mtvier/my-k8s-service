@@ -7,14 +7,16 @@ spec:
   project: default
   source:
     repoURL: https://helm.elastic.co
-    chart: eck-operator
+    chart: elastic-operator
     targetRevision: 8.5.1
     helm:
       values:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: elastic-system
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
